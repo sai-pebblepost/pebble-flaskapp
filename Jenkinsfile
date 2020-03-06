@@ -29,8 +29,6 @@ pipeline {
             
             
         stage('Deploy Approval'){
-		  agent { label 'master' }
-             
             agent none
             steps{
                 timeout(time: 1, unit: 'DAYS'){
