@@ -32,8 +32,8 @@ pipeline {
 					git clone https://github.com/sai-pebblepost/pebble-terraform.git
 					cd pebble-terraform/ec2-instances/app-server-blue/
 					terraform init
-					terraform plan -out=plan
-					terraform apply plan --auto-approve
+					terraform plan
+					terraform apply --auto-approve
 					rm -r pebble-terraform
                         """
                 }
