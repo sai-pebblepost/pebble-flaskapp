@@ -26,7 +26,7 @@ pipeline {
 			  agent { label 'master' }
             steps {
                     sh"""
-		                        rm -r pebble-terraform
+		                       
 					git clone https://github.com/sai-pebblepost/pebble-terraform.git
 					cd pebble-terraform/ec2-instances/app-server-blue/
 					terraform init
@@ -35,11 +35,10 @@ pipeline {
                         """
                 }
             }
-            
-            
-        
-        
-            
-        
+        }
+                post {
+                 always {
+                          echo 'One way or another, I have finished'
+                          deleteDir() 
         }
 }
