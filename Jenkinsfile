@@ -13,6 +13,15 @@ pipeline {
 
     stages {
         
+	    stage('Deploy Approval'){
+            agent none
+            steps{
+                timeout(time: 1, unit: 'DAYS'){
+                    input('do you want to make the changes ?')
+                }
+
+            }
+        }
 		stage('flaskapp') {
 			  agent { label 'master' }
             steps {
@@ -27,24 +36,8 @@ pipeline {
             }
             
             
-        stage('Deploy Approval'){
-            agent none
-            steps{
-                timeout(time: 1, unit: 'DAYS'){
-                    input('do you want to make the changes ?')
-                }
-
-            }
-        }
         
-        stage('flaskapp-deploy') {
-		  agent { label 'master' }
-            steps {
-                    sh"""
-					terraform apply --auto-approve
-                        """
-                }
-            }
+        
             
         
         }
