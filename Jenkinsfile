@@ -22,6 +22,8 @@ pipeline {
 
             }
         }
+		
+		
 		stage('flaskapp') {
 			  agent { label 'master' }
             steps {
@@ -39,4 +41,6 @@ pipeline {
                  always {
                          deleteDir() 
         }
+	}
+		
 }
