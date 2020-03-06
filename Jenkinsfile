@@ -30,9 +30,7 @@ pipeline {
             
         stage('Deploy Approval'){
 		  agent { label 'master' }
-             when  {
-                expression { branchName == 'master' }
-            }
+             
             agent none
             steps{
                 timeout(time: 1, unit: 'DAYS'){
