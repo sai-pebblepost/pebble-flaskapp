@@ -14,6 +14,7 @@ pipeline {
     stages {
         
 		stage('flaskapp') {
+			  agent { label 'master' }
             steps {
                     sh"""
                     rm -r pebble-terraform
@@ -28,6 +29,7 @@ pipeline {
             
             
         stage('Deploy Approval'){
+		  agent { label 'master' }
              when  {
                 expression { branchName == 'master' }
             }
@@ -41,6 +43,7 @@ pipeline {
         }
         
         stage('flaskapp-deploy') {
+		  agent { label 'master' }
             steps {
                     sh"""
 					terraform apply --auto-approve
